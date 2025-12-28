@@ -29,3 +29,15 @@ Download the plugins from [here](/../../tree/builds) and move the zip to `/Aliuc
 
 ### [AudioPlayer](/../../raw/builds/AudioPlayer.zip)
 Play audio attachments directly in chat.
+#### v1.0.7 Update
+<ins>__Fixed__<ins>:
+* Wrong audio playing
+* Crash when switching guild/channel while playing audio
+* Audio being unplayable
+* .ogg files not showing length or time elapsed
+
+<ins>__Improvements__<ins>:
+* Accidental taps outside of seek bar when seeking no longer opens the file in the browser as it is blocked.
+* Added loading bar so the user cannot press play before the audio is initalised.
+
+Credit: https://github.com/Halkiion/rushiiMachine-aliucord-plugins/tree/audioplayer-fix

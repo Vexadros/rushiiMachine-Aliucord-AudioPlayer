@@ -1,11 +1,19 @@
-version = "2.0.0"
+version = "1.0.7"
 description = "Play audio attachments directly in chat."
 
 aliucord {
 	changelog.set(
 		"""
 			# 1.0.7
-			* Fix bugs regarding crashes and desync
+			__Fixed__:
+			* Wrong audio playing
+			* Crash when switching guild/channel while playing audio
+			* Audio being unplayable
+			* .ogg files not showing length or time elapsed
+			__Improvements__:
+			* Accidental taps outside of seek bar when seeking no longer opens the file in the browser as it is blocked.
+			* Added loading bar so the user cannot press play before the audio is initalised.
+			Credit: https://github.com/Halkiion/rushiiMachine-aliucord-plugins
 
 			# 1.0.6
 			* Fix crash on ogg files
@@ -26,5 +34,7 @@ aliucord {
 			* Released
 		""".trimIndent()
 	)
-	author("Zt", 289556910426816513L)
+	author("Zt", 289556910426816513L, hyperlink = true)
+	author("Halkiion", 215249358608662528L, hyperlink = true)
+	deploy.set(true)
 }

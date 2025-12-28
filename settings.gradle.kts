@@ -1,38 +1,36 @@
-include(":NoBadges")
-include(":ReactionQueue")
-include(":1ClickDelete")
-include(":FriendsExporter")
-include(":Insult")
-include(":AlternateReport")
-include(":AttachmentPickerSizes")
-include(":TypingUsers")
-include(":CloneChannels")
-include(":CloseDMs")
-include(":Gestures")
-include(":AudioPlayer")
-include(":NormalizeNames")
-include(":ClickableMentions")
-include(":SlashNick")
-include(":NoTimestamps")
-include(":BetterTm")
-include(":TypingIndicators")
-include(":NoPingWidthLimit")
-include(":Counters")
-include(":HideMessages")
-include(":FixBlockedReplies")
-include(":NoBuiltInCommands")
-include(":OpenProfileInReactions")
-include(":NoNitroAvatars")
-include(":StreamerMode")
-include(":ReplaceAllText")
-include(":NoUppercase")
-include(":FirstMessage")
-include(":ConfigurableStickerSizes")
-include(":SplitMessages")
-include(":OpenDebug")
-includeNoCI(":Template")
-rootProject.name = "aliucord-plugins"
+@file:Suppress("UnstableApiUsage")
 
-fun includeNoCI(vararg projectPaths: String?) {
-	if (System.getenv("CI") != "true") include(*projectPaths)
+pluginManagement {
+    repositories {
+        google()
+        gradlePluginPortal()
+        maven {
+            name = "aliucord"
+            url = uri("https://maven.aliucord.com/releases")
+        }
+    }
 }
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            name = "aliucord"
+            url = uri("https://maven.aliucord.com/releases")
+        }
+        maven {
+            name = "aliucord"
+            url = uri("https://maven.aliucord.com/snapshots")
+        }
+    }
+}
+
+rootProject.name = "aliucord-plugins"
+include(":plugins")
+
+// Add each directory under ./plugins as a separate project
+rootDir.resolve("plugins")
+    .listFiles { file -> file.isDirectory && file.resolve("build.gradle.kts").exists() }!!
+    .forEach { include(":plugins:${it.name}") }
